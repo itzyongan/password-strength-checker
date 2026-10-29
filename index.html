@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Password Strength</title>
+<style>
+  html, body { height: 100%; margin: 0; background: #000; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif; color: #fff; }
+  .field { position: relative; width: min(380px, 85vw); }
+  input { box-sizing: border-box; width: 100%; padding: 16px 52px 16px 18px; font: inherit; font-size: 17px; color: #fff; background: #0c0c0c; border: 1px solid #222; border-radius: 14px; outline: none; transition: border-color .2s, box-shadow .2s; }
+  input::placeholder { color: #555; }
+  input:focus { border-color: #444; box-shadow: 0 0 0 4px rgba(255,255,255,.05); }
+  #toggle { position: absolute; top: 50%; right: 8px; transform: translateY(-50%); width: 36px; height: 36px; display: grid; place-items: center; padding: 0; color: #666; background: none; border: 0; border-radius: 10px; cursor: pointer; transition: color .2s, background .2s; }
+  #toggle:hover { color: #fff; background: #1a1a1a; }
+  #toggle svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  #toggle .off { display: none; }
+  #toggle.on .eye { display: none; }
+  #toggle.on .off { display: block; }
+  #bar { width: min(380px, 85vw); height: 4px; margin-top: 14px; background: #161616; border-radius: 4px; overflow: hidden; }
+  #fill { height: 100%; width: 0; background: #444; border-radius: 4px; transition: width .25s ease, background .25s ease; }
+  #label { margin-top: 12px; height: 20px; font-size: 14px; color: #777; letter-spacing: .01em; }
+</style>
+</head>
+<body>
+  <div class="field">
+    <input id="pw" type="password" placeholder="Type a password" autocomplete="off" spellcheck="false" autofocus>
+    <button id="toggle" type="button" aria-label="Show password">
+      <svg class="eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+      <svg class="off" viewBox="0 0 24 24"><path d="M3 3l18 18"/><path d="M10.6 6.1A10.7 10.7 0 0112 6c6.4 0 10 6 10 6a17 17 0 01-3.2 3.9M6.6 7.6A16.6 16.6 0 002 12s3.6 7 10 7c1.7 0 3.2-.4 4.5-1"/><path d="M9.9 9.9a3 3 0 004.2 4.2"/></svg>
+    </button>
+  </div>
+  <div id="bar"><div id="fill"></div></div>
+  <div id="label"></div>
+<script>
+  const pw = document.getElementById('pw'), fill = document.getElementById('fill'), label = document.getElementById('label'), toggle = document.getElementById('toggle');
+  const levels = [
+    ['', 0, '#444'],
+    ['Very weak', 20, '#e5484d'],
+    ['Weak', 40, '#f76b15'],
+    ['Fair', 60, '#f5d90a'],
+    ['Strong', 80, '#46a758'],
+    ['Very strong', 100, '#30d158']
+  ];
+  pw.addEventListener('input', () => {
+    const v = pw.value;
+    let s = 0;
+    if (v.length) {
+      if (v.length >= 8) s++;
+      if (v.length >= 12) s++;
+      if (/[a-z]/.test(v) && /[A-Z]/.test(v)) s++;
+      if (/\d/.test(v)) s++;
+      if (/[^A-Za-z0-9]/.test(v)) s++;
+      if (s === 0) s = 1;
+    }
+    const [text, width, color] = levels[s];
+    label.textContent = text;
+    label.style.color = s ? color : '#777';
+    fill.style.width = width + '%';
+    fill.style.background = color;
+  });
+  toggle.addEventListener('click', () => {
+    const show = pw.type === 'password';
+    pw.type = show ? 'text' : 'password';
+    toggle.classList.toggle('on', show);
+    toggle.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+    pw.focus();
+  });
+</script>
+</body>
+</html>
