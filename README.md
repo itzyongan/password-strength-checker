@@ -4,7 +4,7 @@ A lightweight, browser-based password strength checker with a clean, minimal int
 
 ## Live Demo
 
-**Try it here:** https://password-strength-checker-defasyl.vercel.app/
+**Try it here:** https://password-strength-checker-v1.vercel.app/
 
 ## Features
 
