@@ -6,6 +6,62 @@
   <title>Password Strength Checker</title>
 
 <style>
+  @font-face {
+    font-family: "Netflix Sans";
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url("https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Th.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Netflix Sans";
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url("https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Lt.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Netflix Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Netflix Sans";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Md.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Netflix Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Md.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Netflix Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Bd.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Netflix Sans";
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url("https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff2") format("woff2");
+  }
+
   html, body { height: 100%; margin: 0; background: #000; }
 
   body {
@@ -13,8 +69,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+    font-family: "Netflix Sans", sans-serif;
     color: #fff;
+  }
+
+  h1, input, button, #label, #crack-time {
+    font-family: "Netflix Sans", sans-serif;
   }
 
   h1 {
@@ -31,8 +91,8 @@
     box-sizing: border-box;
     width: 100%;
     padding: 16px 52px 16px 18px;
-    font: inherit;
     font-size: 17px;
+    font-weight: 400;
     color: #fff;
     background: #0c0c0c;
     border: 1px solid #222;
@@ -99,6 +159,7 @@
     margin-top: 12px;
     height: 20px;
     font-size: 14px;
+    font-weight: 400;
     color: #777;
     letter-spacing: .01em;
   }
@@ -127,6 +188,7 @@
     display: block;
     margin-bottom: 9px;
     color: #888;
+    font-family: "Netflix Sans", sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 1.2px;
